@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YOLO Object Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <main class="container">
+        <section class="card">
+            <h1>YOLO Object Detection</h1>
+            <p class="subtitle">
+                Upload an image and the trained model will locate and classify objects.
+            </p>
+
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <div class="alert">{{ messages[0] }}</div>
+                {% endif %}
+            {% endwith %}
+
+            <form method="POST" enctype="multipart/form-data">
+                <label for="image">Choose an image</label>
+                <input id="image" name="image" type="file"
+                       accept=".png,.jpg,.jpeg,.webp" required>
+
+                <label for="confidence">
+                    Confidence threshold:
+                    <span id="confidence-value">0.25</span>
+                </label>
+                <input id="confidence" name="confidence" type="range"
+                       min="0.05" max="0.95" value="0.25" step="0.05"
+                       oninput="document.getElementById('confidence-value').textContent=this.value">
+
+                <button type="submit">Run Detection</button>
+            </form>
+        </section>
+
+        {% if result_image %}
+        <section class="card">
+            <h2>Detection Result</h2>
+            <img class="result-image"
+                 src="{{ url_for('static', filename=result_image) }}"
+                 alt="Detection result">
+
+            {% if detections %}
+            <h3>Detected Objects</h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Class</th>
+                            <th>Confidence</th>
+                            <th>Bounding box [x1, y1, x2, y2]</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for detection in detections %}
+                        <tr>
+                            <td>{{ detection.class_name }}</td>
+                            <td>{{ detection.confidence }}%</td>
+                            <td>{{ detection.coordinates }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+                <p>No object passed the selected confidence threshold.</p>
+            {% endif %}
+        </section>
+        {% endif %}
+    </main>
+</body>
+</html>
