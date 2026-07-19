@@ -1,4 +1,5 @@
-# Deployment of YOLO object detecting Flask. In this project we utilize a simple Flask web application for deploying a trained YOLOv8 object detection model. 
+# Deployment of YOLO object detecting Flask. 
+In this project we utilize a simple Flask web application for deploying a trained YOLOv8 object detection model. 
 
 ## The model was trained to identify two object classes:
 
