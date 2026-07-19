@@ -23,7 +23,7 @@ Try the deployed app here:
 5. The application shows the annotated image and detection details.
 
 ## Project structure
-```text
+
 yolo-flask-deployment/
 ├── app.py
 ├── Dockerfile
@@ -54,6 +54,8 @@ yolo-flask-deployment/
 - Docker  
 - GitHub  
 - Render  
+
+
 
 ## Run Locally Using Docker 
 1. Clone the repository  
