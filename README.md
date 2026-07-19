@@ -22,27 +22,6 @@ Try the deployed app here:
 4. YOLO returns detected classes, confidence scores, and bounding box coordinates.  
 5. The application shows the annotated image and detection details.
 
-## Project structure
-
-yolo-flask-deployment/
-├── app.py
-├── Dockerfile
-├── requirements.txt
-├── README.md
-├── deployment_link.txt
-├── slides_link.txt
-├── models/
-│   └── best.pt
-├── templates/
-│   └── index.html
-├── static/
-│   ├── style.css
-│   ├── uploads/
-│   └── results/
-└── screenshots/
-    └── app_preview.png
-
-
 
 ## Technologies Used
 - Python  
@@ -55,7 +34,12 @@ yolo-flask-deployment/
 - GitHub  
 - Render  
 
-
+## How to Use the Interface
+1-Open the application.  
+2-Select an image in JPG, JPEG, PNG, or WEBP format.  
+3-Choose the confidence threshold.  
+4-Click Run Detection.  
+5-Review the annotated image and the detection table.  
 
 ## Run Locally Using Docker 
 1. Clone the repository  
@@ -70,13 +54,6 @@ Use code blocks for Terminal commands-> docker run --rm -p 8000:5000 yolo-flask-
 (Open this address in your browser):  
 http://127.0.0.1:8000  
 
-
-## How to Use the Interface
-1-Open the application.  
-2-Select an image in JPG, JPEG, PNG, or WEBP format.  
-3-Choose the confidence threshold.  
-4-Click Run Detection.  
-5-Review the annotated image and the detection table.  
 
 ## Confidence Threshold 
 -The confidence threshold controls the minimum confidence required for a detection to appear.  
@@ -101,3 +78,23 @@ http://127.0.0.1:8000
 ## Deployment 
 -The project source code is hosted on GitHub.  
 -The Dockerized application is deployed online using Render.
+
+## Project structure
+```text
+yolo-flask-deployment/
+├── app.py
+├── Dockerfile
+├── requirements.txt
+├── README.md
+├── deployment_link.txt
+├── slides_link.txt
+├── models/
+│   └── best.pt
+├── templates/
+│   └── index.html
+├── static/
+│   ├── style.css
+│   ├── uploads/
+│   └── results/
+└── screenshots/
+    └── app_preview.png
