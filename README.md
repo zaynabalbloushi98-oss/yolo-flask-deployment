@@ -1,10 +1,28 @@
 # YOLO Object Detection Flask Deployment
 
-## Project description
-This project deploys a trained YOLO object-detection model through a Flask web
-application. A user uploads an image, selects a confidence threshold, and
-receives an annotated image plus a table of detected classes and confidence
-scores.
+# deployment of YOLO object detecting Flask. In this project we utilize a simple Flask web application for deploying a trained YOLOv8 object detection model. The model was trained to identify two object classes:
+
+- Lamp
+- Window
+
+Users upload an image, choose a confidence threshold, then get an annotated image of detected objects, class names, confidence scores, and bounding boxes.
+
+## Live Application
+
+Try the deployed app here:
+(https://yolo-flask-deployment.onrender.com)
+
+#### Application Preview
+
+![YOLO Object Detection Application](screenshots/app_preview.png)
+
+## How the Application Works
+
+1. The user uploads an image through the web interface.  
+2. Flask validates and stores the uploaded image.  
+3. The image is evaluated via the trained YOLO model.  
+4. YOLO returns detected classes, confidence scores, and bounding box coordinates.  
+5. The application shows the annotated image and detection details.
 
 ## Project structure
 ```text
@@ -22,35 +40,3 @@ yolo_flask_deployment/
     ├── uploads/
     └── results/
 ```
-
-## Add the trained model
-Download the best YOLO weights from the training notebook, rename the file
-`best.pt` if necessary, and place it inside `models/`.
-
-## Run locally without Docker
-```bash
-python -m venv venv
-source venv/bin/activate        # Windows: venv\Scripts\activate
-pip install -r requirements.txt
-python app.py
-```
-Open `http://127.0.0.1:5000`.
-
-## Run with Docker
-```bash
-docker build -t yolo-flask-app .
-docker run --rm -p 5000:5000 yolo-flask-app
-```
-Open `http://localhost:5000`.
-
-## Interface usage
-1. Select a JPG, JPEG, PNG, or WEBP image.
-2. Set the confidence threshold.
-3. Click **Run Detection**.
-4. Review the image and detection table.
-
-## Known limitations
-- The model detects only classes included in its training dataset.
-- Accuracy depends on image quality and similarity to the training data.
-- Large model files can exceed free hosting limits.
-- CPU-only online hosting can make prediction slower.
